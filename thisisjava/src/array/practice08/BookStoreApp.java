@@ -60,7 +60,7 @@ public class BookStoreApp {
 	    c.printGiftYn();
 	    
 	    System.out.println("\n===== buy() =====");
-	    boolean pointUseYn = false;
+	    boolean pointUseYn = true;
 	    c.buy(pointUseYn);
 	   
 	}
