@@ -41,12 +41,11 @@ public class Cart {
 	// Methods
 	
 	// Book
-	// 도서 총 금액 출력
+	
 	public void printBooksExpense() {
 		System.out.println("도서 총 금액 : " + toDecimalPrice(sumTotalBooksExpense()));
 	}
-	
-	// 총 구매 도서 목록
+
 	public void printBooksInfo() {
 		for(int i = 0; i < bookArray.length; i++) {
 			System.out.println();
@@ -111,6 +110,7 @@ public class Cart {
 	}
 	
     // Shirt
+    
     public void printShirtsExpense() {
     	System.out.println("셔츠 총 금액 : " + toDecimalPrice(sumTotalShirtsExpense()));
     }
@@ -142,6 +142,7 @@ public class Cart {
     }
     
     // Total
+    
     public void printTotalExpense() {
     	System.out.println("지출 총 금액 : " + toDecimalPrice(sumTotalExpense()));
     }
@@ -160,10 +161,6 @@ public class Cart {
 
     public void printGiftYn() {
     	System.out.println("사은품 여부 : " + ((sumTotalExpense() >= 200000) ? "대상" : "비대상"));
-    }
-    
-    private long sumTotalExpense() {
-    	return sumTotalBooksExpense() + sumTotalShirtsExpense();
     }
     
     public void buy(boolean pointUseYn) {
@@ -189,6 +186,10 @@ public class Cart {
 
 	    System.out.println("\n----- 사은품 -----");
 	    printGiftYn();
+    }
+    
+    private long sumTotalExpense() {
+    	return sumTotalBooksExpense() + sumTotalShirtsExpense();
     }
     
     private void printMemberInfo() {
@@ -267,6 +268,7 @@ public class Cart {
     }
     
     // 공통
+    
     private void printTotalCountTotalExpense(int totalCount, long totalExpense, String item) {
 		System.out.println();
 		System.out.println("* 구매수 : " + totalCount + ((item == "book") ? "(권)" : "(벌)"));
