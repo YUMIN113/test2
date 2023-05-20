@@ -7,5 +7,5 @@ public class BookService {
 	public static Book makeBook(String category, String title, String writer, String publisher, int price, String isbn) {
 		return new Book(category, title, writer, publisher, price, isbn);
 	}
+	
 }
-;
