@@ -1,9 +1,8 @@
 package array.practice08.bookstore_app01;
 
-import array.practice08.domain.Book;
-import array.practice08.domain.BookStore;
-import array.practice08.domain.Member;
-import array.practice08.service.BookService;
+import array.practice08.bookstore_app01.domain.Book;
+import array.practice08.bookstore_app01.domain.BookStore;
+import array.practice08.bookstore_app01.service.BookService;
 
 public class BookStoreApp {
 

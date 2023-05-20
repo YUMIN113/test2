@@ -1,12 +1,12 @@
 package array.practice08.bookstore_app02;
 
-import array.practice08.domain.Book;
-import array.practice08.domain.BookStore;
-import array.practice08.domain.Cart;
-import array.practice08.domain.Member;
-import array.practice08.domain.Shirt;
-import array.practice08.service.BookService;
-import array.practice08.service.ShirtService;
+import array.practice08.bookstore_app02.domain.Book;
+import array.practice08.bookstore_app02.domain.BookStore;
+import array.practice08.bookstore_app02.domain.Cart;
+import array.practice08.bookstore_app02.domain.Member;
+import array.practice08.bookstore_app02.domain.Shirt;
+import array.practice08.bookstore_app02.service.BookService;
+import array.practice08.bookstore_app02.service.ShirtService;
 
 public class BookStoreApp {
 

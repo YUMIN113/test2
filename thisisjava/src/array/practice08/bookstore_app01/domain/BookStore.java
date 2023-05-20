@@ -1,4 +1,4 @@
-package array.practice08.domain;
+package array.practice08.bookstore_app01.domain;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

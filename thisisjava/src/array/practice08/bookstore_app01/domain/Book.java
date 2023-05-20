@@ -1,4 +1,4 @@
-package array.practice08.bookstore_app01.domian;
+package array.practice08.bookstore_app01.domain;
 
 public class Book {
 	

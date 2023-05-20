@@ -1,6 +1,6 @@
 package array.practice08.bookstore_app02.service;
 
-import array.practice08.domain.Shirt;
+import array.practice08.bookstore_app02.domain.Shirt;
 
 public class ShirtService {
 	
