@@ -67,18 +67,5 @@ public class Shirt {
 	public void setShirtPrice(int shirtPrice) {
 		this.shirtPrice = shirtPrice;
 	}
-
-//	public void printInfo() {
-//		System.out.println();
-//		System.out.println("===== Shirt Info =====");
-//		System.out.println("이름 : " + this.getName());
-//		System.out.println("컬러 : " + this.getColor());
-//		System.out.println("회사 : " + this.getCompany());
-//		System.out.println("소재 : " + this.getMaterials());
-//		System.out.println("사이즈 : " + this.getSize());
-//		System.out.println("가격 : " + this.getPrice());
-//	}
-//	
-	
 	
 }
