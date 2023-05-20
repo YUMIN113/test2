@@ -11,7 +11,7 @@ public class BookStoreApp {
 
 	public static void main(String[] args) {
 		
-		Member member = new Member("coldwinter", "Victoria", "A", 5000);
+		Member member = new Member("coldwinter", "Victoria", "A", 6000);
 		
 		Book[] bookArray = new Book[5];
 		bookArray[0] = BookService.makeBook("comic", "열혈강호", "전극진,양재현", "대원씨아이", 4500, "979-11-5754-926-9");
