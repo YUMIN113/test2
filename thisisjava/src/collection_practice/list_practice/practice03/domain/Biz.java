@@ -11,6 +11,7 @@ public class Biz {
 	public List<Book> convert(String[] contents) {
 		StringTokenizer st;
 		List<Book> bookList = new ArrayList<>();
+		
 		for(String data : contents) {
 			st = new StringTokenizer(data, "/");
 			String category = st.nextToken();

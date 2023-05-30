@@ -6,8 +6,6 @@ import collection_practice.list_practice.practice03.domain.Biz;
 import collection_practice.list_practice.practice03.domain.Book;
 import collection_practice.list_practice.practice03.domain.BookStore;
 
-
-
 public class BookStoreApp {
 
 	public static void main(String[] args) {

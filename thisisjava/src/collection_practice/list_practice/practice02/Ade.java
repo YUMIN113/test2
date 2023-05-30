@@ -22,10 +22,13 @@ public class Ade extends Menu {
 	@Override
 	public void printInfo() {
 		System.out.print("메뉴=" + getName());
-		DecimalFormat df = new DecimalFormat("#,###");
-		String result = df.format(getPrice());
-		System.out.print(" | 가격=" + result);
+		System.out.print(" | 가격=" + toDecimalFormat(getPrice()));
 		System.out.println(" | 재료=" + material);
+	}
+	
+	private String toDecimalFormat(int price) {
+		DecimalFormat df = new DecimalFormat("#,###");
+		return df.format(price);
 	}
 	
 }

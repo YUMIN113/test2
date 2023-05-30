@@ -8,35 +8,35 @@ import java.util.List;
 public class Order {
 
 	private List<Menu> menuList;
-	private static int orderCount = 0;
-	private static int menuCount = 0;
+	private static int totalOrderCount = 0;
+	private static int totalMenuCount = 0;
 	private static long totalSum = 0;
 
 	public Order(List<Menu> menuList) {
 		this.menuList = menuList;
-		orderCount++;
+		totalOrderCount++;
 	}
 	
 	public void printOrder() {
 		
 		System.out.println("\n===== 주문서 =====");
-		int orderNum = orderCount;
+		
+		int orderNum = totalOrderCount;
 		System.out.println("* 주문번호 : " + orderNum);
 		for(int i = 0; i < menuList.size(); i++) {
 			System.out.print("\t" + (i + 1) + ".");
 			menuList.get(i).printInfo();
 		}
-		menuCount += menuList.size();
+		
+		totalMenuCount += menuList.size();
 		System.out.println("* 주문 메뉴수 : " + menuList.size());
 		
 		long sum = totalSum(menuList);
 		totalSum += sum;
+		System.out.println("* 주문액 : " + toDecimalFormat(sum) + "(원)");
 		
-		DecimalFormat df = new DecimalFormat("#,###");
-		String result = df.format(sum);
-		System.out.println("* 주문액 : " + result + "(원)");
-		
-		printOrderTime();
+		String orderTime = createOrderTime();
+		System.out.println("* 주문시간 : " + orderTime);
 		
 	}
 
@@ -48,18 +48,21 @@ public class Order {
 		return sum;
 	}
 	
-	private void printOrderTime() {
+	private static String toDecimalFormat(long sum) {
+		DecimalFormat df = new DecimalFormat("#,###");
+		return df.format(sum);
+	}
+	
+	private String createOrderTime() {
 		Date now = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-		System.out.println("* 주문시간 : " + sdf.format(now));
+		return sdf.format(now);
 	}
 	
 	public static void printSummary() {
 		System.out.println("\n===== 정산 =====");
-		System.out.println("총 주문 건수 : " + (orderCount));
-		System.out.println("총 주문 메뉴 수 : " + menuCount);
-		DecimalFormat df = new DecimalFormat("#,###");
-		String result = df.format(totalSum);
-		System.out.println("총 매출 : " + result + "(원)");
+		System.out.println("총 주문 건수 : " + totalOrderCount);
+		System.out.println("총 주문 메뉴 수 : " + totalMenuCount);
+		System.out.println("총 매출 : " + toDecimalFormat(totalSum) + "(원)");
 	}
 }
