@@ -9,25 +9,7 @@ public class Manager {
     private List<Member> members = new ArrayList<>();
 	
 	public void printPersonList() {
-		int num = 1;
-		for(Member member : members) {
-			System.out.print(num + ".");
-			System.out.print("아이디=" + member.getId() + " | ");
-			System.out.print("이름=" + member.getName() + " | ");
-			System.out.print("나이=" + member.getAge() + " | ");
-			System.out.println(toKorean(member.getSex()));
-			num++;
-		}	
-	}
-	
-	private String toKorean(String sex) {
-		String koreanStr = " ";
-		if(sex.equals("F")) {
-			koreanStr = "여";
-		} else {
-			koreanStr = "남";
-		}
-		return koreanStr;
+		printPersonList(members);
 	}
 
 	public void addPerson(Scanner sc) {
@@ -98,7 +80,7 @@ public class Manager {
 		String sex = sc.nextLine().toUpperCase();
 
 		List<Member> targetMembers = findBySex(sex);
-		printTargetPersonList(targetMembers);
+		printPersonList(targetMembers);
 	}
 
 	private List<Member> findBySex(String sex) {
@@ -108,7 +90,7 @@ public class Manager {
 				.toList();
 	}
 	
-	private void printTargetPersonList(List<Member> targetMembers) {
+	private void printPersonList(List<Member> targetMembers) {
 		int num = 1;
 		for(Member member : targetMembers) {
 			System.out.print(num + ".");
@@ -120,6 +102,16 @@ public class Manager {
 		}	
 	}
 	
+	private String toKorean(String sex) {
+		String koreanStr = " ";
+		if(sex.equals("F")) {
+			koreanStr = "여";
+		} else {
+			koreanStr = "남";
+		}
+		return koreanStr;
+	}
+	
 	public void selectPersonBetweenAge(Scanner sc) {
 		System.out.print("시작 나이를 입력하세요 =>");
 		int minAge = Integer.parseInt(sc.nextLine());
@@ -127,7 +119,7 @@ public class Manager {
 		int maxAge = Integer.parseInt(sc.nextLine());
 		
 		List<Member> targetMembers = findBetweenAge(minAge, maxAge);
-		printTargetPersonList(targetMembers);
+		printPersonList(targetMembers);
 		
 	}
 	
