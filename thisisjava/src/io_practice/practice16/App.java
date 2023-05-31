@@ -20,7 +20,7 @@ public class App {
 				System.out.println("5. 조회(성별)");
 				System.out.println("6. 조회(나이 구간)");
 				System.out.println("9. 종료");
-				System.out.println("메뉴를 선택하세요 =>");
+				System.out.print("메뉴를 선택하세요 =>");
 				String menu = sc.nextLine();
 				
 				switch(menu) {
@@ -31,6 +31,30 @@ public class App {
 				case "2":
 					System.out.println("[등록]");
 					manager.addPerson(sc);
+					break;
+				case "3":
+					System.out.println("[수정]");
+					manager.updatePerson(sc);
+					break;
+				case "4":
+					System.out.println("[삭제]");
+					manager.deletePerson(sc);
+					break;
+				case "5":
+					System.out.println("[조회] 성별");
+					manager.selectPersonBySex(sc);
+					break;
+				case "6":
+					System.out.println("[조회] 나이 구간");
+					manager.selectPersonBetweenAge(sc);
+					break;
+				case "9":
+					System.out.println("[종료]");
+					System.out.println("프로그램을 종료합니다.");
+					whileLoop = false;
+					break;
+				default:
+					System.out.println("잘못 선택하셨습니다.");
 					break;
 				}
 			} catch (Exception e) {
