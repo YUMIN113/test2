@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 public class Manager {
 	
+	private final static String KOREAN_FEMALE_WORD = "여";
+	
+	private final static String KOREAN_MALE_WORD = "남 ";
+	
     private List<Member> members = new ArrayList<>();
 	
 	public void printPersonList() {
@@ -14,14 +18,22 @@ public class Manager {
 	}
 
 	public void addPerson(Scanner sc) {
+		String sex = "";
+		String id = "";
+		String name = "";
+		int age = -1;
+		
 		System.out.print("ID를 입력하세요 =>");
-		String id = sc.nextLine();
+		id = sc.nextLine();
 		System.out.print("이름을 입력하세요 =>");
-		String name = sc.nextLine();
+		name = sc.nextLine();
 		System.out.print("나이를 입력하세요 =>");
-		int age = Integer.parseInt(sc.nextLine());
-		System.out.print("성별을 입력하세요(값 : F, M) =>");
-		String sex = sc.nextLine();
+		age = Integer.parseInt(sc.nextLine());
+		
+		do {	
+			System.out.print("성별을 입력하세요(값 : F, M) =>");
+			sex = sc.nextLine();
+		} while(validation(sex));
 		
 		if(isSameId(id)) {
 			System.out.println();
@@ -29,6 +41,14 @@ public class Manager {
 		} else {
 			members.add(new Member(id, name, age, sex));
 		}
+	}
+	
+	private boolean validation(String sex) {
+		if (sex.equals("F") || sex.equals("M")) {
+			return false;
+		}
+		System.out.println("성별 잘못 입력하셨습니다. 다시 입력해 주세요.");
+		return true;
 	}
 	
 	private boolean isSameId(String id) {
@@ -116,13 +136,10 @@ public class Manager {
 	}
 	
 	private String toKorean(String sex) {
-		String koreanStr = " ";
 		if(sex.equals("F")) {
-			koreanStr = "여";
-		} else {
-			koreanStr = "남";
+			return KOREAN_FEMALE_WORD;
 		}
-		return koreanStr;
+		return KOREAN_MALE_WORD;
 	}
 	
 	public void selectPersonBetweenAge(Scanner sc) {
