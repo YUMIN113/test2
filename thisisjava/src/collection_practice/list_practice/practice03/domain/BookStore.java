@@ -150,7 +150,7 @@ public class BookStore {
 		
 		for(int i = 0; i < bookList.size(); i++) {
 					
-			if(bookList.get(i).getPrice() >= betweenMinPrice && bookList.get(i).getPrice() < betweemMaxPrice) {
+			if(bookList.get(i).getPrice() >= betweenMinPrice && bookList.get(i).getPrice() <= betweemMaxPrice) {
 				System.out.println();
 				System.out.println(num + ".");
 				printBookInfo(i);
