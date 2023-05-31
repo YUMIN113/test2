@@ -2,6 +2,7 @@ package io_practice.practice16;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Manager {
@@ -31,10 +32,8 @@ public class Manager {
 	}
 	
 	private boolean isSameId(String id) {
-		for(Member member : members) {
-			if(member.getId().equals(id)) {
-				return true;
-			} 
+		if (findById(id).isPresent()) {
+			return true;
 		}
 		return false;
 	}
@@ -49,30 +48,44 @@ public class Manager {
 		System.out.print("수정 성별을 입력하세요(값 : F, M) =>");
 		String sex = sc.nextLine();
 		
-		Member member = findById(id);
+		Optional<Member> opMember = findById(id);
 		
-		member.setName(name);
-		member.setAge(age);
-		member.setSex(sex);
+		if (!opMember.isPresent()) {
+			System.out.println("회원이 존재하지 않습니다.");
+			return;
+		}
+		
+		if (opMember.isPresent()) {
+			Member member = opMember.get();
+			member.setName(name);
+			member.setAge(age);
+			member.setSex(sex);
+		}
 	}
 	
-	private Member findById(String id) {
-		Member member = null;
-		for(Member targetMember : members) {
-			if(targetMember.getId().equals(id)) {
-				member = targetMember;
-				break;
-			}
-		}
-		return member;
+	private Optional<Member> findById(String id) {
+		return members
+		.stream()
+		.filter(it -> it.getId().equals(id))
+		.findFirst();
 	}
 	
 	public void deletePerson(Scanner sc) {
 		System.out.print("ID를 입력하세요 =>");
 		String id = sc.nextLine();
 		
-		Member member = findById(id);
-		members.remove(member);
+		Optional<Member> opMember = findById(id);
+		
+		if (!opMember.isPresent()) {
+			System.out.println("회원이 존재하지 않습니다.");
+			return;
+		}
+		
+		if (opMember.isPresent()) {
+			Member member = opMember.get();
+			members.remove(member);
+		}
+		
 	}
 	
 	public void selectPersonBySex(Scanner sc) {
