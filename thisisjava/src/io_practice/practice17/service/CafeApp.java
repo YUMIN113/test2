@@ -13,6 +13,7 @@ public class CafeApp {
 		boolean whileLoop = true;
 		
 		while(whileLoop) {
+			System.out.println();
 			System.out.println("########## Cafe App ##########");
 			System.out.println("1. 메뉴 관리");
 			System.out.println("2. 주문 관리");
@@ -38,7 +39,6 @@ public class CafeApp {
 				break;
 			}
 		}
-		
 	}
 	
 	public void printMenuList() throws Exception {

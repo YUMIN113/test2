@@ -1,6 +1,9 @@
 package io_practice.practice17.domain;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+
+import common.util.NumberFormatUtil;
 
 public class Menu implements Serializable {
 
@@ -52,6 +55,11 @@ public class Menu implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	@Override
+	public String toString() {
+		return "\t" + this.getItemNum() + ". " + this.getItemCategory() + " : " + this.getItemName() + " " + NumberFormatUtil.toDecimalFormat(this.getItemPrice()) + "(원)";
 	}
 	
 }

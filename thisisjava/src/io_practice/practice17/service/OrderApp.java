@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import common.util.NumberFormatUtil;
 import io_practice.practice17.domain.Menu;
 import io_practice.practice17.domain.Order;
 
@@ -22,7 +23,7 @@ public class OrderApp {
 	public void addOrder() throws Exception {
 		menuList = menuApp.findAllMenu();
 		
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:/Temp/receipt.txt"));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/file/receipt.txt"));
 		
 		boolean whileLoop = true;
 		int orderItemNum = 1;
@@ -53,6 +54,7 @@ public class OrderApp {
 			
 			orderItemNum++;
 			
+			System.out.println();
 			System.out.println("주문을 추가하시겠습니까?");
 			System.out.println("\t" + "1.추가");
 			System.out.println("\t" + "2.주문 종료");
@@ -76,30 +78,45 @@ public class OrderApp {
 	
 	private void printOrderInfo() throws Exception {
 		
-		orderList = findAllOrder();
-		int finalTotalSum = 0;
-		
-		for(Order order : orderList) {
-			System.out.print("\t" + "주문번호 " + order.getOrderItemNum() + ". ");
-			System.out.println(order.getOrderItemName() + " | " + order.getOrderItemCount() + "(개)" + " | " + "금액 : " + order.getOrderItemTotalSum() + "(원)" + " | " + order.getOrderTime());
-			finalTotalSum += order.getOrderItemTotalSum();
+		try {
+			orderList = findAllOrder();
+			orderList.forEach(System.out::println);
+		} catch(Exception ex) {
+			System.out.println("파일이 존재하지 않습니다.");
+			return;
 		}
 		
-		System.out.println("\t" + "*총 금액 : " + finalTotalSum);
+		String finalTotalSum = sumTotalPrice(orderList);
+		System.out.println("\t" + "*총 금액 : " + finalTotalSum + "(원)");
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Order> findAllOrder() throws Exception {
-		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:/Temp/receipt.txt"));	
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/file/receipt.txt"));	
 		List<Order> targetOrderList = (List<Order>) ois.readObject();
 		ois.close();
 		return targetOrderList;
 	}
 	
+	private String sumTotalPrice(List<Order> orderList) {
+		int finalTotalSum = 0;
+		
+		for(Order order : orderList) {
+			finalTotalSum += order.getOrderItemTotalSum();
+		}
+		return NumberFormatUtil.toDecimalFormat(finalTotalSum);
+	}
+	
 	public void printOrderList() throws Exception {
 		System.out.println();
 		System.out.println("[주문 조회]");
-		printOrderInfo();
+		
+		try {
+			orderList = findAllOrder();
+			orderList.forEach(System.out::println);
+		} catch(Exception ex) {
+			System.out.println("파일이 존재하지 않습니다.");
+			return;
+		}
 	}
 
 }

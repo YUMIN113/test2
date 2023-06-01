@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import common.util.NumberFormatUtil;
+
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = -4787900992915374232L;
@@ -71,5 +73,13 @@ public class Order implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "\t" + "주문번호 " + this.getOrderItemNum() + ". "
+				+ this.getOrderItemName() + " | " 
+				+ this.getOrderItemCount() + "(개)" + " | "
+				+ "금액 : " + NumberFormatUtil.toDecimalFormat(this.getOrderItemTotalSum()) + "(원)" + " | " 
+				+ this.getOrderTime();
+	}
 }
