@@ -32,7 +32,7 @@ public class Manager {
 		
 		do {	
 			System.out.print("성별을 입력하세요(값 : F, M) =>");
-			sex = sc.nextLine();
+			sex = sc.nextLine().toUpperCase();
 		} while(validation(sex));
 		
 		if(isSameId(id)) {
@@ -59,27 +59,31 @@ public class Manager {
 	}
 
 	public void updatePerson(Scanner sc) {
-		System.out.print("ID를 입력하세요 =>");
-		String id = sc.nextLine();
-		System.out.print("수정 이름을 입력하세요 =>");
-		String name = sc.nextLine();
-		System.out.print("수정 나이를 입력하세요 =>");
-		int age = Integer.parseInt(sc.nextLine());
-		System.out.print("수정 성별을 입력하세요(값 : F, M) =>");
-		String sex = sc.nextLine();
+		boolean whileLoop = true;
 		
-		Optional<Member> opMember = findById(id);
-		
-		if (!opMember.isPresent()) {
-			System.out.println("회원이 존재하지 않습니다.");
-			return;
-		}
-		
-		if (opMember.isPresent()) {
-			Member member = opMember.get();
-			member.setName(name);
-			member.setAge(age);
-			member.setSex(sex);
+		while(whileLoop) {
+			System.out.print("ID를 입력하세요 =>");
+			String id = sc.nextLine();
+			System.out.print("수정 이름을 입력하세요 =>");
+			String name = sc.nextLine();
+			System.out.print("수정 나이를 입력하세요 =>");
+			int age = Integer.parseInt(sc.nextLine());
+			System.out.print("수정 성별을 입력하세요(값 : F, M) =>");
+			String sex = sc.nextLine().toUpperCase();
+			
+			Optional<Member> opMember = findById(id);
+			
+			if (!opMember.isPresent()) {
+				System.out.println("회원이 존재하지 않습니다.");
+			}
+			
+			if (opMember.isPresent()) {
+				Member member = opMember.get();
+				member.setName(name);
+				member.setAge(age);
+				member.setSex(sex);
+				whileLoop = false;
+			}
 		}
 	}
 	
@@ -91,21 +95,24 @@ public class Manager {
 	}
 	
 	public void deletePerson(Scanner sc) {
-		System.out.print("ID를 입력하세요 =>");
-		String id = sc.nextLine();
+		boolean whileLoop = true;
 		
-		Optional<Member> opMember = findById(id);
-		
-		if (!opMember.isPresent()) {
-			System.out.println("회원이 존재하지 않습니다.");
-			return;
+		while(whileLoop) {
+			System.out.print("ID를 입력하세요 =>");
+			String id = sc.nextLine();
+			
+			Optional<Member> opMember = findById(id);
+			
+			if (!opMember.isPresent()) {
+				System.out.println("회원이 존재하지 않습니다.");
+			}
+			
+			if (opMember.isPresent()) {
+				Member member = opMember.get();
+				members.remove(member);
+				whileLoop = false;
+			}
 		}
-		
-		if (opMember.isPresent()) {
-			Member member = opMember.get();
-			members.remove(member);
-		}
-		
 	}
 	
 	public void selectPersonBySex(Scanner sc) {
@@ -150,7 +157,6 @@ public class Manager {
 		
 		List<Member> targetMembers = findBetweenAge(minAge, maxAge);
 		printPersonList(targetMembers);
-		
 	}
 	
 	private List<Member> findBetweenAge(int minAge, int maxAge) {
