@@ -1,4 +1,4 @@
-package network_practice.json_practice;
+package network_practice.json_practice.practice01;
 
 import java.io.FileWriter;
 import java.io.IOException;
