@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import common.util.NumberFormatUtil;
+import commonfunc.util.NumberFormatUtil;
 import io_practice.practice17.domain.Menu;
 import io_practice.practice17.domain.Order;
 

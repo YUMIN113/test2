@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import common.util.NumberFormatUtil;
+import commonfunc.util.NumberFormatUtil;
 
 public class Order implements Serializable {
 

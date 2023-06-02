@@ -3,7 +3,7 @@ package io_practice.practice17.domain;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-import common.util.NumberFormatUtil;
+import commonfunc.util.NumberFormatUtil;
 
 public class Menu implements Serializable {
 
