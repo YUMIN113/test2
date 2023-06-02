@@ -33,7 +33,13 @@ public class SocketClient {
 	
 	public void receive() {
 		chatServer.threadPool.execute(() -> {
-			
+			try {
+				while(true) {
+					String receiveJson = dis.readUTF();
+					
+					
+				}
+			}
 		})
 	}
 	
