@@ -13,6 +13,8 @@ public class App {
 		
 		int totalCalory = BizSummary.getTotalCalory(menu);
 		System.out.println("Calory : " + totalCalory + "(kcal)");
+		
+	
 	}
 
 	
