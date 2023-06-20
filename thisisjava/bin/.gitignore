@@ -12,8 +12,10 @@
 /inheritance_interface/
 /interface_practice/
 /io_practice/
+/lambda_practice/
 /lombok_practice/
 /math_class_practice/
+/nestedclass/
 /network_practice/
 /practice01/
 /practice02/
@@ -40,6 +42,7 @@
 /practice_date/
 /record/
 /reflection_practice/
+/stream/
 /stringbuilder_class_practice/
 /stringtokenizer_class_practice/
 /system_class_practice/

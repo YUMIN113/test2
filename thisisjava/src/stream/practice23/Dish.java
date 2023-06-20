@@ -2,20 +2,20 @@ package stream.practice23;
 
 public class Dish {
 
-	private String food;
-	private int kcal;
+	private String name;
+	private int calories;
 	
-	public Dish(String food, int kcal) {
-		this.food = food;
-		this.kcal = kcal;
+	public Dish(String name, int calories) {
+		this.name = name;
+		this.calories = calories;
 	}
 
-	public String getFood() {
-		return food;
+	public String getName() {
+		return name;
 	}
 
-	public int getKcal() {
-		return kcal;
+	public int getCalories() {
+		return calories;
 	}
 
 }

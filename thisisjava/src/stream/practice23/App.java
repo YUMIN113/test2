@@ -14,7 +14,17 @@ public class App {
 		int totalCalory = BizSummary.getTotalCalory(menu);
 		System.out.println("Calory : " + totalCalory + "(kcal)");
 		
+		double averageCalory = BizSummary.getAverageCalory(menu);
+		System.out.println("Calory : " + averageCalory + "(kcal)");
+		
+		Dish mostCaloricDish = BizSummary.getMostCaloricDish(menu);
+		System.out.println("Dish : " + mostCaloricDish.getName() + " | " + mostCaloricDish.getCalories() + "(kcal)");
+        	
+		Dish leastCaloricDish = BizSummary.getLeastCaloricDish(menu);
+		System.out.println("Dish : " + leastCaloricDish.getName() + " | " + leastCaloricDish.getCalories() + "(kcal)");
 	
+		String dishNameWithComma = BizSummary.getDishNameWithComma(menu);
+		System.out.println("Name : " + dishNameWithComma);
 	}
 
 	
